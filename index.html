@@ -55,6 +55,58 @@
       }
     });
   });
-                           </script>
+   <script>
+  // vytvoříme okno s otázkou
+  const hearts = document.querySelectorAll('.heart');
+
+  hearts.forEach(heart => {
+    heart.addEventListener('click', () => {
+      // vytvoříme overlay
+      const overlay = document.createElement('div');
+      overlay.style.position = 'fixed';
+      overlay.style.top = '0';
+      overlay.style.left = '0';
+      overlay.style.width = '100%';
+      overlay.style.height = '100%';
+      overlay.style.background = 'rgba(0,0,0,0.5)';
+      overlay.style.display = 'flex';
+      overlay.style.justifyContent = 'center';
+      overlay.style.alignItems = 'center';
+      overlay.style.zIndex = '1000';
+
+      // vytvoříme box s otázkou
+      const box = document.createElement('div');
+      box.style.background = 'white';
+      box.style.padding = '30px';
+      box.style.borderRadius = '15px';
+      box.style.textAlign = 'center';
+      box.style.boxShadow = '0 10px 30px rgba(0,0,0,0.3)';
+      box.innerHTML = `
+        <h2>Budeš můj Valentýn? ❤️</h2>
+        <button id="yesBtn" style="margin:10px;padding:10px 20px;font-size:16px;">Ano</button>
+        <button id="noBtn" style="margin:10px;padding:10px 20px;font-size:16px;">Ne</button>
+        <p id="warn" style="color:red;margin-top:15px;"></p>
+      `;
+
+      overlay.appendChild(box);
+      document.body.appendChild(overlay);
+
+      // tlačítka
+      const yesBtn = document.getElementById('yesBtn');
+      const noBtn = document.getElementById('noBtn');
+      const warn = document.getElementById('warn');
+
+      yesBtn.addEventListener('click', () => {
+        warn.textContent = '';
+        box.innerHTML = '<h2>Jupí! 💌</h2>';
+        setTimeout(() => overlay.remove(), 2000); // zmizí po 2 sekundách
+      });
+
+      noBtn.addEventListener('click', () => {
+        warn.textContent = 'Musíš kliknout na Ano ❤️';
+      });
+    });
+  });
+</script>                        </script>
 </body>
 </html>
