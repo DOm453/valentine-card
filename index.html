@@ -36,6 +36,25 @@
       </div>
     </div>
   </div>
+<script>
+  // Najdeme všechna srdíčka
+  const hearts = document.querySelectorAll('.heart');
 
+  hearts.forEach(heart => {
+    heart.addEventListener('click', () => {
+      let answer = '';
+      while(answer !== 'Ano') {
+        answer = prompt('Budeš můj Valentýn? Napiš "Ano" nebo "Ne"');
+        if(answer === null) return; // pokud klikne na zrušit
+        answer = answer.trim();
+        if(answer.toLowerCase() === 'ano') {
+          alert('Jupí! 💌');
+        } else {
+          alert('Musíš kliknout na Ano ❤️');
+        }
+      }
+    });
+  });
+                           </script>
 </body>
 </html>
